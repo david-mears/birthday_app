@@ -1,3 +1,4 @@
+<% require './lib/difference.rb' %>
 Hello <%= name %>!
 <p><%=month%></p>
 <p><%=day%></p>
@@ -5,9 +6,5 @@ Hello <%= name %>!
 <% if Time.new.month.to_i == month.to_i && Time.new.day.to_i == day.to_i %>
 HAPPY BIRTHDAY <%= name.upcase %>!
 <% else %>
-<% require 'time_difference' %>
-<% start_time = Time.new((Time.new.year-1),month.to_i,day.to_i) %>
-<% end_time = Time.new %>
-<% difference = TimeDifference.between(end_time, start_time).humanize%>
-Your birthday is in <%= difference %>.
+Your birthday is in <%= difference(month: month, day: day) %>.
 <% end %>
